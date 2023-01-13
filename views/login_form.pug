@@ -1,0 +1,13 @@
+extends layout 
+
+block content 
+  h1 Log In!
+  form(method='POST' action='')
+    div.signUpForm
+      label(for='user_name') User Name: 
+      input#userName(type='text' placeholder='User Name' name='username' required='true' )
+
+      label(for='password') Password: 
+      input#userName(type='password' placeholder='Password' name='password' required='true' )
+      
+      button(type='submit') Log In! 

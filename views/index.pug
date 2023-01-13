@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  h1 Welcome to the Message Board for Members Only!
+  if(user)
+    h1 Welcome back, #{user.firstname}
+  if(user)
+    if(user.membership)
+      h5 Status: Member *
+    else 
+      h5 Status: Non Member
+  else 
+    h5 Status: Non Member
+
+ 
