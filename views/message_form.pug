@@ -5,9 +5,11 @@ block content
   form(method='POST' action='')
     div.signUpForm
       label(for='title') Title: 
-      input#messageTitle(type='text' placeholder='Title' name='title' required='true' )
+      input#messageTitle(type='text' placeholder='Title' name='title' required='true' 
+      maxlength='25' )
 
       label(for='body') Body: 
-      input#messageBody(type='text' placeholder='Body' name='body' required='true' )
+      input#messageBody(type='text' placeholder='Body' name='body' required='true' 
+      maxlength='280')
       
       button(type='submit') Submit!

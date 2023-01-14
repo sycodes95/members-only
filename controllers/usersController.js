@@ -12,6 +12,9 @@ const bcrypt = require("bcryptjs")
 
 const { check, body, validationResult } = require("express-validator");
 
+require('dotenv').config()
+
+
 
 //------------------------------------------------
 
@@ -50,7 +53,7 @@ exports.sign_up_post = [
         if (err) { 
           return next(err);
         }
-        res.redirect("/");
+        res.redirect("/login");
       });
       
     })
@@ -89,6 +92,24 @@ exports.log_out_get = (req,res,next) =>{
   })
 }
 
+exports.admin_get = (req, res, next) =>{
+  res.render('admin', {user: req.user})
+}
+
+exports.admin_post = (req, res, next) =>{
+  if(req.body.password == process.env.ADMIN_PW && req.user){
+    Users.findOneAndUpdate({username: req.user.username}, {$set:{admin: true}}, {new: true}, (err, user) =>{
+      console.log('user',user)
+      if(err){
+        return next(err)
+      }
+      res.redirect('/')
+    })
+  } else {
+    res.render('admin', {user: req.user, wrong: 'Password was incorrect'})                  
+  }
+}
+
 exports.members_get = (req, res) =>{
   res.render('members', {user: req.user})
 }
@@ -101,7 +122,7 @@ exports.members_post = (req, res, next) =>{
       if(err){
         return next(err)
       }
-      res.render('index', {user: user})
+      res.redirect('/')
     })
   } else {
     res.render('members', {user: req.user, wrong: 'Wrong! Try again'})                  

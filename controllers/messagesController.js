@@ -44,10 +44,14 @@ exports.message_post = (req, res, next) => {
 
   message.save((err)=>{
     if(err) return next(err)
-    res.render('index', {
-      user: req.user,
-      
-    })
+    res.redirect('/')
   })
   
+}
+
+exports.message_delete = (req, res, next) =>{
+  Messages.findByIdAndRemove(req.body.id, function deleteMsg(err){
+    if(err) return next(err)
+    res.redirect('/')
+  })
 }

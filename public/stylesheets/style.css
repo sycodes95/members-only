@@ -27,7 +27,7 @@ a {
 }
 
 .headerCon{
-  font: 24px bender, "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 18px bender, "Lucida Grande", Helvetica, Arial, sans-serif;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   justify-content:space-between;
@@ -69,21 +69,27 @@ a {
 
 .indexCon{
   display: grid;
-  grid-auto-rows: 300px;
+  grid-template-columns: repeat(3, 260px);
+  column-gap: 40px;
   justify-content: center;
+  grid-auto-rows: 300px;
+  align-items: center;
+ 
 }
 
 
 
 
 .messageCon{
+  
+
   display: grid;
   grid-template-rows: 20% 60% 20%;
   background-color: rgb(236, 149, 19);
   height: 220px;
   width: 220px;
   padding: 20px;
-  border: solid 4px rgb(221, 221, 5);
+  
   margin-bottom: 40px;
 }
 
@@ -103,7 +109,45 @@ a {
   font-weight: 100;
 }
 
+.messageFooter{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  justify-content: space-between;
+}
+
 .messageUser, .messageDate{
   font-size: 10px;
 }
 
+.messageUser > span{
+  color:rgb(255, 242, 0);
+}
+
+.messageDate > span{
+  color:red;
+}
+
+.adminStatus{
+  color: darkmagenta;
+}
+
+.messageInfo{
+  display: grid;
+  align-items: center;
+}
+
+.messageDelete{
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
+
+.deleteButton{
+  background: none;
+  border: solid 1px black;
+}
+
+.deleteButton:hover{
+  cursor: pointer;
+  color: red;
+}

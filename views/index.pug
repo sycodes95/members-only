@@ -6,7 +6,9 @@ block content
     if(user)
       h1 Welcome back, #{user.firstname}
     if(user)
-      if(user.membership)
+      if(user.admin)
+        h5(class='adminStatus') Status: Admin
+      else if (user.membership)
         h5 Status: Member *
       else 
         h5 Status: Non Member
@@ -22,19 +24,28 @@ block content
           div(class='messageBody')
             span #{message.messageBody}
           div(class='messageFooter')
+            div(class='messageInfo')
+              if(user)
+                if(user.membership)
+                  div(class='messageUser') User: 
+                    span #{message.username}
+                  div(class='messageDate') Date:  
+                    span #{message.createdAt.toDateString()}
+                else 
+                  div(class='messageUser') User: 
+                    span Unknown
+                  div(class='messageDate') Date: 
+                    span Unknown
+              else
+                  div(class='messageUser') User: 
+                    span Unknown
+                  div(class='messageDate') Date: 
+                    span Unknown
             if(user)
-              if(user.membership)
-                div(class='messageUser')
-                  span User: #{message.username}
-                div(class='messageDate')
-                  span Date: #{message.createdAt.toDateString()}
-              else 
-                div(class='messageUser')
-                  span User: Unknown
-                div(class='messageDate')
-                  span Date: Unknown
-            else
-                div(class='messageUser')
-                  span User: Unknown
-                div(class='messageDate')
-                  span Date: Unknown
+              if(user.admin)
+                div(class='messageDelete')
+                  form(method='POST' action='')
+                    div.form-group
+                      input#id.form-control(type='hidden',name='id', required='true', value=message._id )
+
+                    button(class='deleteButton' type='submit') X

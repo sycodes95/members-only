@@ -1,13 +1,16 @@
 extends layout 
 
 block content 
-  h1 What's the password?
-  form(method='POST' action='')
-    div.signUpForm
-      
-      label(for='password') Password: 
-      input#userName(type='password' placeholder='2+2=?' name='password' required='true' )
-      button(type='submit') Try password
-      if(wrong)
-        span= wrong
-    span Hint: Its dumb
+  if(!user.membership)
+    h1 What's the password?
+    form(method='POST' action='')
+      div.signUpForm
+        
+        label(for='password') Password: 
+        input#userName(type='password' placeholder='2+2=?' name='password' required='true' )
+        button(type='submit') Try password
+        if(wrong)
+          span= wrong
+      span Hint: Its dumb
+  else
+    h4 You're already a member! You can check your status on the homepage :)

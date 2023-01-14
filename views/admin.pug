@@ -1,0 +1,16 @@
+extends layout 
+
+block content 
+  if(!user.admin)
+    h1 Enter admin password
+    form(method='POST' action='')
+      div.signUpForm
+        
+        label(for='password') Password: 
+        input#userName(type='password' placeholder='password' name='password' required='true' )
+        button(type='submit') Try password
+        if(wrong)
+          span= wrong
+      
+  else
+    h4 Status is admin
