@@ -18,13 +18,18 @@ html(lang='en')
             a(href="/") 
               span Da Club
           div(class='userCon')
-            a(href="/login")
-              span Log In
-            a(href="/signup")
-              span Sign Up
+            if(!user)
+              a(href="/login")
+                span Log In
+              a(href="/signup")
+                span Sign Up
             if(user)
               a(href="/members")
                 span Members Only
+              a(href="/message")
+                span Create Message
+              a(href="/logout")
+                span Log Out
 
       div(class='contentCon')
         block content

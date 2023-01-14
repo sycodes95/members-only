@@ -1,15 +1,40 @@
 extends layout
 
 block content
-  h1 Welcome to the Message Board for Members Only!
-  if(user)
-    h1 Welcome back, #{user.firstname}
-  if(user)
-    if(user.membership)
-      h5 Status: Member *
+  div(class='indexHeader')
+    h1 Welcome to the Message Board for Members Only!
+    if(user)
+      h1 Welcome back, #{user.firstname}
+    if(user)
+      if(user.membership)
+        h5 Status: Member *
+      else 
+        h5 Status: Non Member
     else 
       h5 Status: Non Member
-  else 
-    h5 Status: Non Member
 
- 
+  div(class='indexCon')
+    if(message_list)
+      each message in message_list 
+        div(class='messageCon')
+          div(class='messageTitle')
+            span #{message.messageTitle}
+          div(class='messageBody')
+            span #{message.messageBody}
+          div(class='messageFooter')
+            if(user)
+              if(user.membership)
+                div(class='messageUser')
+                  span User: #{message.username}
+                div(class='messageDate')
+                  span Date: #{message.createdAt.toDateString()}
+              else 
+                div(class='messageUser')
+                  span User: Unknown
+                div(class='messageDate')
+                  span Date: Unknown
+            else
+                div(class='messageUser')
+                  span User: Unknown
+                div(class='messageDate')
+                  span Date: Unknown

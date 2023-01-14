@@ -1,0 +1,13 @@
+extends layout 
+
+block content 
+  h1 Create Message!
+  form(method='POST' action='')
+    div.signUpForm
+      label(for='title') Title: 
+      input#messageTitle(type='text' placeholder='Title' name='title' required='true' )
+
+      label(for='body') Body: 
+      input#messageBody(type='text' placeholder='Body' name='body' required='true' )
+      
+      button(type='submit') Submit!

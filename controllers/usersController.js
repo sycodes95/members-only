@@ -14,10 +14,7 @@ const { check, body, validationResult } = require("express-validator");
 
 
 //------------------------------------------------
-exports.index = (req,res) =>{
-  console.log(req.user);
-  res.render('index', {user: req.user})
-}
+
 exports.sign_up_get = (req, res) =>{
   res.render('signup_form')
 }
@@ -61,7 +58,7 @@ exports.sign_up_post = [
 ];
 
 exports.log_in_get = (req, res) =>{
-  res.render('login_form')
+  res.render('login_form', {user: req.user})
 }
 
 
@@ -79,9 +76,17 @@ exports.log_in_post = (req, res, next) =>{
       if(err) {
         return next(err)
       }
-      return res.render('index', {user: req.user})
+      //return res.render('index', {user: user})
+      return res.redirect('/')
     })
   })(req,res,next)
+}
+
+exports.log_out_get = (req,res,next) =>{
+  req.logout(function (err){
+    if(err) return next(err)
+    res.redirect('/')
+  })
 }
 
 exports.members_get = (req, res) =>{
@@ -102,3 +107,4 @@ exports.members_post = (req, res, next) =>{
     res.render('members', {user: req.user, wrong: 'Wrong! Try again'})                  
   }
 }
+

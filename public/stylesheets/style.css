@@ -1,8 +1,109 @@
+@font-face {
+  font-family: bender;
+  src: url(../fonts/font.woff2);
+}
+
+@font-face {
+  font-family: abel;
+  src: url(../fonts/Abel-Regular.ttf);
+}
+
+
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  margin: 0;
+  font: 14px bender, "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 a {
-  color: #00B7FF;
+  color: #feffa5;
+  text-decoration: none;
 }
+
+
+#messageBody{
+  
+  width: 500px;
+ 
+}
+
+.headerCon{
+  font: 24px bender, "Lucida Grande", Helvetica, Arial, sans-serif;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  justify-content:space-between;
+  color: white;
+  background-color: rgb(32,42,68);
+  padding-left: 50px;
+  padding-right: 50px;
+}
+.logoCon{
+  font-family: bender, "Lucida Grande", Helvetica, Arial, sans-serif;;
+  font-size: 50px;
+}
+
+.userCon{
+  display: flex;
+  justify-content: space-between;
+  column-gap: 40px;
+  justify-content: end;
+  align-items: center;
+}
+
+.userCon > a {
+  height: fit-content;
+  width: fit-content;
+}
+
+.indexHeader {
+  display: grid;
+  justify-content: center;
+  text-align: center;
+}
+.contentCon{
+  
+  display: grid;
+  grid-template-columns: 1fr;
+  
+  width: 100%;
+}
+
+.indexCon{
+  display: grid;
+  grid-auto-rows: 300px;
+  justify-content: center;
+}
+
+
+
+
+.messageCon{
+  display: grid;
+  grid-template-rows: 20% 60% 20%;
+  background-color: rgb(236, 149, 19);
+  height: 220px;
+  width: 220px;
+  padding: 20px;
+  border: solid 4px rgb(221, 221, 5);
+  margin-bottom: 40px;
+}
+
+.messageTitle{
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+
+
+.messageBody{
+  word-wrap: break-word;
+  max-width: 220px;
+  width: 100%;
+  font-size: 12px;
+  font-weight: 100;
+}
+
+.messageUser, .messageDate{
+  font-size: 10px;
+}
+
